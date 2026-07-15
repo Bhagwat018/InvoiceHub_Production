@@ -1,7 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { ActivityIndicator, useTheme } from 'react-native-paper';
-import AppText from './AppText';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 
 interface LoadingStateProps {
   message?: string;
@@ -12,21 +10,17 @@ export default function LoadingState({
   message = 'Loading...',
   fullScreen = true,
 }: LoadingStateProps) {
-  const theme = useTheme();
-
   return (
     <View
       style={[
         styles.container,
         fullScreen && styles.fullScreen,
-        { backgroundColor: theme.colors.background },
+        { backgroundColor: '#FAFAFA' },
       ]}
     >
-      <ActivityIndicator size="large" color={theme.colors.primary} />
+      <ActivityIndicator size="large" color="#1E88E5" />
       {message && (
-        <AppText variant="bodyMedium" color="textSecondary" style={styles.message}>
-          {message}
-        </AppText>
+        <Text style={styles.message}>{message}</Text>
       )}
     </View>
   );
@@ -43,5 +37,7 @@ const styles = StyleSheet.create({
   },
   message: {
     marginTop: 16,
+    fontSize: 14,
+    color: '#666666',
   },
 });

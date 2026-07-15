@@ -37,7 +37,11 @@ export default function SettingsScreen() {
   const { colors } = useAppTheme();
   const navigation = useNavigation<NavigationProp>();
   const insets = useSafeAreaInsets();
-  const { themeMode, currency, language, dateFormat, notifications } = useSettingsStore();
+  const themeMode = useSettingsStore((s) => s.themeMode);
+  const currency = useSettingsStore((s) => s.currency);
+  const language = useSettingsStore((s) => s.language);
+  const dateFormat = useSettingsStore((s) => s.dateFormat);
+  const notifications = useSettingsStore((s) => s.notifications);
 
   const themeLabel = themeMode === 'system' ? 'System' : themeMode === 'dark' ? 'Dark' : 'Light';
 

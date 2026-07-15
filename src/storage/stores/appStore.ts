@@ -44,9 +44,12 @@ export const useAppStore = create<AppState>()(
       showSplash: true,
       isFirstLaunch: true,
 
-      setInitialized: (value) => set({ isInitialized: value }),
-      setDarkMode: (value) => set({ isDarkMode: value }),
-      setThemeMode: (mode) => set({ themeMode: mode }),
+      setInitialized: (value) =>
+        set((state) => (state.isInitialized === value ? state : { isInitialized: value })),
+      setDarkMode: (value) =>
+        set((state) => (state.isDarkMode === value ? state : { isDarkMode: value })),
+      setThemeMode: (mode) =>
+        set((state) => (state.themeMode === mode ? state : { themeMode: mode })),
       setLanguage: (lang) => set({ language: lang }),
       setCurrency: (curr) => set({ currency: curr }),
       setDateFormat: (format) => set({ dateFormat: format }),

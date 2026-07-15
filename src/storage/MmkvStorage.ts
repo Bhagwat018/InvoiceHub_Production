@@ -1,13 +1,13 @@
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 import { StorageKeys, StorageKey } from './keys';
 
 export const ENCRYPTION_KEY = 'invoicehub_secure_key_2024';
 
 class MmkvStorage {
-  private storage: MMKV;
+  private storage: ReturnType<typeof createMMKV>;
 
   constructor() {
-    this.storage = new MMKV({
+    this.storage = createMMKV({
       id: 'invoicehub-storage',
       encryptionKey: ENCRYPTION_KEY,
     });

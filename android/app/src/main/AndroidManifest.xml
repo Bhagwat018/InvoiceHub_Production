@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Internet (for backup, ads, restore only) -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -57,6 +57,12 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+
+      <!-- Google AdMob - Replace with your real Application ID before production -->
+      <meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="ca-app-pub-3940256099942544~3347511713"
+        tools:replace="android:value"/>
 
       <!-- File Provider for sharing PDFs -->
       <provider

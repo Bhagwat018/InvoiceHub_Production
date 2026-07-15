@@ -56,9 +56,7 @@ export const backupMetadataCollection = database.get<BackupMetadata>('backup_met
 
 export async function initializeDatabase(): Promise<void> {
   try {
-    await database.write(async () => {
-      await database.unsafeResetDatabase();
-    });
+    await database.get('customers').fetch();
     console.log('[Database] Initialized successfully');
   } catch (error) {
     console.error('[Database] Initialization failed:', error);

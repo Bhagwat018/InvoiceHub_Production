@@ -93,7 +93,8 @@ export default function DashboardScreen() {
   const navigation = useNavigation<NavigationProp>();
   const insets = useSafeAreaInsets();
   const business = useSettingsStore((s) => s.business);
-  const { stats, isLoading: storeLoading, lastFetched } = useDashboardStore();
+  const stats = useDashboardStore((s) => s.stats);
+  const storeLoading = useDashboardStore((s) => s.isLoading);
   const { invoices, isLoading: invoicesLoading } = useInvoices();
   const { refreshDashboard, isLoading: reportsLoading } = useReports();
   const [refreshing, setRefreshing] = useState(false);

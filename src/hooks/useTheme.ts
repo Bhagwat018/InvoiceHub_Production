@@ -7,8 +7,10 @@ import type { AppTheme } from '../theme';
 
 export function useTheme() {
   const systemScheme = useColorScheme();
-  const { themeMode, setThemeMode, setDarkMode } = useAppStore();
-  const { setThemeMode: persistThemeMode } = useSettingsStore();
+  const themeMode = useAppStore((state) => state.themeMode);
+  const setThemeMode = useAppStore((state) => state.setThemeMode);
+  const setDarkMode = useAppStore((state) => state.setDarkMode);
+  const persistThemeMode = useSettingsStore((state) => state.setThemeMode);
 
   const isDark = useMemo(() => {
     if (themeMode === 'system') {

@@ -12,7 +12,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {useMMKVString} from 'react-native-mmkv';
 import {storage} from './src/storage';
 import {RootNavigator} from './src/navigation';
-import {LoadingState} from './src/components/common/LoadingState';
+import LoadingState from './src/components/common/LoadingState';
 import {initializeDatabase} from './src/database';
 import {useAppStore} from './src/storage/stores/appStore';
 
@@ -63,12 +63,13 @@ const darkTheme = {
 
 function App(): React.JSX.Element {
   const [isReady, setIsReady] = useState(false);
-  const {isDarkMode, setThemeMode} = useAppStore();
+  const isDarkMode = useAppStore((state) => state.isDarkMode);
+  const setThemeMode = useAppStore((state) => state.setThemeMode);
 
   const setupApp = useCallback(async () => {
     try {
       await initializeDatabase();
-      const savedTheme = storage.getString('theme_mode');
+      const savedTheme = storage.theme.get();
       if (savedTheme) {
         setThemeMode(savedTheme as 'light' | 'dark' | 'system');
       }

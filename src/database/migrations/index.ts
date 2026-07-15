@@ -3,7 +3,7 @@ import { schemaMigrations, createTable, addColumns } from '@nozbe/watermelondb/S
 export const migrations = schemaMigrations({
   migrations: [
     {
-      toVersion: 1,
+      toVersion: 2,
       steps: [
         createTable({
           name: 'customers',
